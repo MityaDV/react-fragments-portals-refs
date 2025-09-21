@@ -1,8 +1,9 @@
 import Card from '../UI/Card';
 import styles from './CreateUser.module.css';
 import Button from '../UI/Button';
-import { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import ErrorModal from '../UI/ErrorModal';
+// import Wrapper from '../helpers/Wrapper';
 
 const CreateUser = (props) => {
   const [inputName, setInputName] = useState('');
@@ -42,7 +43,12 @@ const CreateUser = (props) => {
   };
 
   return (
-    <div>
+    // Используем компонент обертку - Wrapper - один из способов
+    // <Wrapper>
+    // Но так же в React есть встроенные компоненты обертки React.Fragment
+    // <React.Fragment>
+    // Короткая запись с импортом Fragment
+    <Fragment>
       {error && (
         <ErrorModal
           title={error.title}
@@ -69,7 +75,8 @@ const CreateUser = (props) => {
           <Button type="submit">Добавить пользователя</Button>
         </form>
       </Card>
-    </div>
+    </Fragment>
+    // </Wrapper>
   );
 };
 export default CreateUser;
